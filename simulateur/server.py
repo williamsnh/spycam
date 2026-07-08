@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, WebSocket
 from fastapi.responses import StreamingResponse
 from PIL import Image, ImageDraw
 import io
@@ -22,3 +22,10 @@ def generate_frames():
 @app.get("/stream")
 def stream():
     return StreamingResponse(generate_frames(), media_type="multipart/x-mixed-replace; boundary=frame")
+
+@app.websocket("/ws")
+async def websocket_endpoint(websocket: WebSocket):
+    await websocket.accept()
+    while True:
+        message = await websocket.receive_text()
+        print("Reçu:", message)
