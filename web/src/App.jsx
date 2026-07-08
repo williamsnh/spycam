@@ -9,7 +9,7 @@ function App() {
     <div>
       <h1>Spycam</h1>
       <p>Interface de supervision à venir</p>
-        <img src="https://placehold.co/640x480?text=Flux+video" alt="flux vidéo du robot" />
+        <img src="http://127.0.0.1:8000/frame" alt="flux vidéo du robot" />
     </div>
   );
 }
